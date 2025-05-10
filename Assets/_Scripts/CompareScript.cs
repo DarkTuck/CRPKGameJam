@@ -10,6 +10,13 @@ public class CompareScript : MonoBehaviour
     
     public void Select(GameObject obj)
     {
+        if (obj.CompareTag("Evidence"))
+        {
+            if (evidenceTable.GetEvidenceObject(obj.GetComponent<Image>()).status == EvidenceStatus.UnFound)
+            {
+                return;
+            }
+        }
         if (firstObject == obj)
         {
             UnselectFirstObject();
@@ -25,6 +32,10 @@ public class CompareScript : MonoBehaviour
 
         if (!firstObject)
         {
+            if (evidenceTable.GetEvidenceObject(obj.GetComponent<Image>()).status == EvidenceStatus.Explored)
+            {
+                return;
+            }
             firstObject = obj;
             var outline = obj.GetComponent<Outline>() ? obj.GetComponent<Outline>() : obj.AddComponent<Outline>();
             outline.effectColor = Color.gold;
