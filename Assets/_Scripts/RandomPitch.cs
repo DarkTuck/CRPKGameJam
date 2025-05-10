@@ -4,10 +4,14 @@ using System.Threading.Tasks;
 
 public class RandomPitch : MonoBehaviour
 {
-    [SerializeField][BoxGroup("Settings")]float minValue, maxValue;
-    [SerializeField][BoxGroup("Settings")]float interval;
-    [SerializeField]AudioSource audioSource;
+    [SerializeField][BoxGroup("Settings")][MinMaxSlider(-3,3)]Vector2 minMaxValue;
+    [SerializeField][BoxGroup("Settings")][ValidateInput("IsGreaterThanZero","Interval must be greater than zero")]float interval;
+    [SerializeField][Required]AudioSource audioSource;
     bool shouldPlay = true;
+    private bool IsGreaterThanZero(float value)
+    {
+        return value > 0;
+    }
 
     void OnEnable()
     {
@@ -24,7 +28,7 @@ public class RandomPitch : MonoBehaviour
     {
         while (shouldPlay)
         {
-            audioSource.pitch = Random.Range(minValue, maxValue);
+            audioSource.pitch = Random.Range(minMaxValue.x, minMaxValue.y);
             await Task.Delay(Mathf.RoundToInt(interval*1000));
         }
     }
