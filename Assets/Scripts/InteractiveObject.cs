@@ -3,7 +3,7 @@ using UnityEngine.UI;
 public class InteractiveObject : MonoBehaviour
 {
     [SerializeField] protected Button objectArea;
-    private void Start()
+    protected virtual void Start()
     {
         objectArea.onClick.AddListener(OnObjectInteracted);
     }
