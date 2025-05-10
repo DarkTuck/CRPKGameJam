@@ -70,7 +70,7 @@ public class CompareScript : MonoBehaviour
     void SuccesfullCompare(EvidenceObject evidence)
     {
         evidence.status = EvidenceStatus.Explored;
-        evidenceTable.DisplayEvidenceTable();
+        evidenceTable.CurrentEvidenceCount++;
         UnselectFirstObject();
         output.TextValue = "znaleziono połączenie";
     }
@@ -82,5 +82,6 @@ public class CompareScript : MonoBehaviour
             firstObject.GetComponent<Outline>().enabled = false;
         }
         firstObject = null;
+        evidenceTable.DisplayEvidenceTable();
     }
 }

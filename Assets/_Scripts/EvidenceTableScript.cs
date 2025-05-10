@@ -9,12 +9,21 @@ public class EvidenceTableScript : MonoBehaviour
 {
     [SerializeField][Foldout("Basics")]EvidenceList evidenceList;
     [SerializeField] [Foldout("Basics")] private Image[] itemSlots;
+    [SerializeField] Button CallEveryoneButton;
     [SerializeField] String NotFoundAnswer;
     [SerializeField] String unExploerdAnswer;
+    short allEvidenceCount;
+    public short CurrentEvidenceCount;
+
+    private void Awake()
+    {
+        allEvidenceCount=(short)evidenceList.evidenceObjectList.Length;
+        CallEveryoneButton.gameObject.SetActive(false);
+    }
 
     public void DisplayEvidenceTable()
     {
-        for (int i = 0; i < evidenceList.evidenceObjectList.Length; i++)
+        for (short i = 0; i <allEvidenceCount; i++)
         {
             switch (evidenceList.evidenceObjectList[i].status)
             {
@@ -61,5 +70,14 @@ public class EvidenceTableScript : MonoBehaviour
     public EvidenceObject GetEvidenceObject(Image itemSlot)
     {
        return evidenceList.evidenceObjectList[Array.IndexOf(itemSlots, itemSlot)];
+    }
+
+    void CheckEvidenceCount()
+    {
+        if (allEvidenceCount == CurrentEvidenceCount)
+        {
+            Debug.Log("All Evidence solved");
+            CallEveryoneButton.gameObject.SetActive(true);
+        }
     }
 }
