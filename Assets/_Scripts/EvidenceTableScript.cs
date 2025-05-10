@@ -57,4 +57,9 @@ public class EvidenceTableScript : MonoBehaviour
                return NotFoundAnswer;
         }
     }
+
+    public EvidenceObject GetEvidenceObject(Image itemSlot)
+    {
+       return evidenceList.evidenceObjectList[Array.IndexOf(itemSlots, itemSlot)];
+    }
 }
