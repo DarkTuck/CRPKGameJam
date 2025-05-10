@@ -18,11 +18,11 @@ public class EvidenceTableScript : MonoBehaviour
         {
             switch (evidenceList.evidenceObjectList[i].status)
             {
-                case EvidenceStatus.unFound:
+                case EvidenceStatus.UnFound:
                     itemSlots[i].sprite=evidenceList.evidenceObjectList[i].objectImage;
                     itemSlots[i].color = Color.gray3;
                     break;
-                case EvidenceStatus.unExplored:
+                case EvidenceStatus.UnExplored:
                     itemSlots[i].sprite=evidenceList.evidenceObjectList[i].objectImage;
                     if (!itemSlots[i].GetComponent<Outline>())
                     {
@@ -31,7 +31,7 @@ public class EvidenceTableScript : MonoBehaviour
                         outline.effectDistance = new Vector2(2f, 2f); 
                     }
                     break;
-                case EvidenceStatus.explored:
+                case EvidenceStatus.Explored:
                     var outline2 = itemSlots[i].GetComponent<Outline>();
                     if (outline2)
                     {
@@ -49,9 +49,9 @@ public class EvidenceTableScript : MonoBehaviour
         int index;
         switch (evidenceList.evidenceObjectList[index = Array.IndexOf(itemSlots, itemSlot)].status)
         {
-           case EvidenceStatus.unExplored:
+           case EvidenceStatus.UnExplored:
                return unExploerdAnswer;
-           case EvidenceStatus.explored:
+           case EvidenceStatus.Explored:
                return evidenceList.evidenceObjectList[index].description;
            default:
                return NotFoundAnswer;

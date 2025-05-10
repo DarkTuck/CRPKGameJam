@@ -9,7 +9,7 @@ public class Evidence : InteractiveObject
     protected override void OnObjectInteracted()
     {
         base.OnObjectInteracted();
-        evidenceObject.status = EvidenceStatus.unExplored;
+        evidenceObject.status = EvidenceStatus.UnExplored;
         uIText.TextValue = $@"{messege} {evidenceObject.name}";
     }
 }

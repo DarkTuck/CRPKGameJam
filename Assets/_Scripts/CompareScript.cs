@@ -69,7 +69,7 @@ public class CompareScript : MonoBehaviour
     }
     void SuccesfullCompare(EvidenceObject evidence)
     {
-        evidence.status = EvidenceStatus.explored;
+        evidence.status = EvidenceStatus.Explored;
         evidenceTable.DisplayEvidenceTable();
         UnselectFirstObject();
         output.TextValue = "znaleziono połączenie";
