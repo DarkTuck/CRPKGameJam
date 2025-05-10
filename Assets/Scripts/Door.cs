@@ -1,10 +1,14 @@
 using UnityEngine;
 
+
 public class Door :InteractiveObject
 {
+    [SerializeField] GameObject gameObjectToLoad;
+    [SerializeField] GameObject thisGameObject;
+
     protected override void OnObjectInteracted()
     {
         base.OnObjectInteracted();
-        Debug.Log("AAAAAAAAAAAA");
+        gameObjectToLoad.SetActive(true);
     }
 }
