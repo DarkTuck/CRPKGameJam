@@ -2,10 +2,10 @@ using UnityEngine;
 using UnityEngine.UI;
 public class InteractiveObject : MonoBehaviour
 {
-    [SerializeField] private Button button;
+    [SerializeField] protected Button objectArea;
     private void Start()
     {
-        button.onClick.AddListener(OnObjectInteracted);
+        objectArea.onClick.AddListener(OnObjectInteracted);
     }
 
     protected virtual void OnObjectInteracted(){
