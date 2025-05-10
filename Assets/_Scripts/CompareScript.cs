@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,6 +13,13 @@ public class CompareScript : MonoBehaviour
         if (firstObject == obj)
         {
             UnselectFirstObject();
+            return;
+        }
+
+        if (obj.CompareTag("Owner") && !firstObject)
+        {
+            UnselectFirstObject();
+            output.TextValue = "Najpierw wybierz dowód";
             return;
         }
 
