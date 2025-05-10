@@ -1,20 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ReturnToPreviousRoom : MonoBehaviour
+public class ReturnToPreviousRoom : InteractiveObject
 {
     [SerializeField] private GameObject buttonsToReturnBack;
     [SerializeField] private GameObject thisGameObject;
     [SerializeField] private GameObject gameObjectToReturnTo;
 
-    private void Start()
+    protected override void Start()
     {
         foreach(Button button in buttonsToReturnBack.GetComponentsInChildren<Button>()){
-            button.onClick.AddListener(OnButtonClicked);
+            button.onClick.AddListener(OnObjectInteracted);
         }
     }
-
-    private void OnButtonClicked(){
+    protected override void OnObjectInteracted(){
+        base.OnObjectInteracted();
         gameObjectToReturnTo.SetActive(true);
         thisGameObject.SetActive(false);
     }
