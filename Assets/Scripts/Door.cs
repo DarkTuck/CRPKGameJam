@@ -10,5 +10,6 @@ public class Door :InteractiveObject
     {
         base.OnObjectInteracted();
         gameObjectToLoad.SetActive(true);
+        thisGameObject.SetActive(false);
     }
 }
