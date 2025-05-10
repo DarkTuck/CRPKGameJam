@@ -5,7 +5,7 @@ public class Evidence : InteractiveObject
 {
     [SerializeField] EvidenceObject evidenceObject;
     [SerializeField] StringEvent uIText;
-    [SerializeField] String messege = "Znalazłeś:";
+    [SerializeField] string messege = "Znalazłeś:";
     protected override void OnObjectInteracted()
     {
         base.OnObjectInteracted();

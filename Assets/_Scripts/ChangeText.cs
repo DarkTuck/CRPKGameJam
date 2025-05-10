@@ -16,7 +16,7 @@ public class ChangeText : MonoBehaviour
         stringEvent.UnregisterDelegate(DelegateChanged);
     }
 
-    void DelegateChanged(bool isDebug)
+    private void DelegateChanged(bool isDebug)
     {
         attachedText.text = stringEvent.TextValue;
     }

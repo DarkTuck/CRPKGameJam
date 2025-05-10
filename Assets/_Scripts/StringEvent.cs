@@ -4,9 +4,10 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "StringEvent", menuName = "Scriptable Objects/StringEvent")]
 public class StringEvent : ScriptableObject
 {
-    private String textValue;
+    private string textValue;
     public delegate void ValueChangedDelegate(bool isDebug);
-    ValueChangedDelegate valueChangedDelegate;
+
+    private ValueChangedDelegate valueChangedDelegate;
     [SerializeField] private bool debugChange;
 
     public String TextValue
@@ -16,10 +17,7 @@ public class StringEvent : ScriptableObject
             textValue = value;
             ValueChanged();
         }
-        get
-        {
-            return textValue;
-        }
+        get => textValue;
     }
 
     private void ValueChanged()

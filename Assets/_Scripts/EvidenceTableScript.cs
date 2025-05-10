@@ -1,8 +1,6 @@
 using UnityEngine;
 using System;
 using NaughtyAttributes;
-using Unity.VisualScripting;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class EvidenceTableScript : MonoBehaviour
@@ -10,8 +8,8 @@ public class EvidenceTableScript : MonoBehaviour
     [SerializeField][Foldout("Basics")]EvidenceList evidenceList;
     [SerializeField] [Foldout("Basics")] private Image[] itemSlots;
     [SerializeField] Button CallEveryoneButton;
-    [SerializeField] String NotFoundAnswer;
-    [SerializeField] String unExploerdAnswer;
+    [SerializeField] string NotFoundAnswer;
+    [SerializeField] string unExploerdAnswer;
     short allEvidenceCount;
     public short CurrentEvidenceCount;
 
@@ -35,7 +33,7 @@ public class EvidenceTableScript : MonoBehaviour
                     itemSlots[i].sprite=evidenceList.evidenceObjectList[i].objectImage;
                     if (!itemSlots[i].GetComponent<Outline>())
                     {
-                        var outline = itemSlots[i].AddComponent<Outline>();
+                        var outline = itemSlots[i].gameObject.AddComponent<Outline>();
                         outline.effectColor = Color.red;
                         outline.effectDistance = new Vector2(2f, 2f); 
                     }
@@ -59,7 +57,7 @@ public class EvidenceTableScript : MonoBehaviour
         }
     }
 
-    public String ReturnInfo(Image itemSlot)
+    public string ReturnInfo(Image itemSlot)
     {
         int index;
         switch (evidenceList.evidenceObjectList[index = Array.IndexOf(itemSlots, itemSlot)].status)
