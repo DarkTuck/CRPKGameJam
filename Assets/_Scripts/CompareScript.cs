@@ -103,4 +103,6 @@ public class CompareScript : MonoBehaviour
         firstObject = null;
         evidenceTable.DisplayEvidenceTable();
     }
+    
+    
 }
