@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Note : InteractiveObject, IPointerClickHandler
+public class Note : InteractiveObject
 {
     [SerializeField] private GameObject noteImage;
     [SerializeField] private Button closeNoteButton;
@@ -19,10 +19,5 @@ public class Note : InteractiveObject, IPointerClickHandler
     }
     private void OnNoteClosed(){
         noteImage.SetActive(false);
-    }
-
-    public void OnPointerClick(PointerEventData eventData)
-    {
-        OnObjectInteracted();
     }
 }

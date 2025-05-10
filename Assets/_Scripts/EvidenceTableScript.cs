@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
 using NaughtyAttributes;
+using Unity.VisualScripting;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
@@ -23,9 +24,19 @@ public class EvidenceTableScript : MonoBehaviour
                     break;
                 case EvidenceStatus.unExplored:
                     itemSlots[i].sprite=evidenceList.evidenceObjectList[i].objectImage;
-                    itemSlots[i].color = Color.red;
+                    if (!itemSlots[i].GetComponent<Outline>())
+                    {
+                        var outline = itemSlots[i].AddComponent<Outline>();
+                        outline.effectColor = Color.red;
+                        outline.effectDistance = new Vector2(2f, 2f); 
+                    }
                     break;
                 case EvidenceStatus.explored:
+                    var outline2 = itemSlots[i].GetComponent<Outline>();
+                    if (outline2)
+                    {
+                        outline2.enabled=false;
+                    }
                     itemSlots[i].sprite=evidenceList.evidenceObjectList[i].objectImage;
                     //itemSlots[i].color = Color.gray;
                 break;
