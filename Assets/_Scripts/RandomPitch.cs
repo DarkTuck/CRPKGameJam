@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 public class RandomPitch : MonoBehaviour
 {
-    [SerializeField][BoxGroup("Settings")]int minValue, maxValue;
+    [SerializeField][BoxGroup("Settings")]float minValue, maxValue;
     [SerializeField][BoxGroup("Settings")]float interval;
     [SerializeField]AudioSource audioSource;
     bool shouldPlay = true;
