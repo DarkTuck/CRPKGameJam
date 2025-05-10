@@ -39,6 +39,12 @@ public class EvidenceTableScript : MonoBehaviour
                         outline.effectColor = Color.red;
                         outline.effectDistance = new Vector2(2f, 2f); 
                     }
+                    else
+                    {
+                        var outline = itemSlots[i].GetComponent<Outline>();
+                        outline.effectColor = Color.red;
+                        outline.effectDistance = new Vector2(2f, 2f); 
+                    }
                     break;
                 case EvidenceStatus.Explored:
                     var outline2 = itemSlots[i].GetComponent<Outline>();
