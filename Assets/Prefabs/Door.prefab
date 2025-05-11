@@ -128,6 +128,7 @@ MonoBehaviour:
   objectArea: {fileID: 7932320561544722491}
   defaultCursor: {fileID: 2800000, guid: 08e77728baa90984abb77be312618c8b, type: 3}
   newCursor: {fileID: 2800000, guid: 5bbdb3136f7ce864bb5e141d1861f5a0, type: 3}
+  AudioClip: {fileID: 8300000, guid: 9336ee51a303b704b98f0e36e6e6c056, type: 3}
   gameObjectToLoad: {fileID: 0}
   thisGameObject: {fileID: 0}
 --- !u!114 &7932320561544722491 stripped
