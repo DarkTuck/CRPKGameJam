@@ -2,6 +2,7 @@
 using UnityEngine;
 using TMPro;
 using Ink.Runtime;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class InkDialogManager : MonoBehaviour
@@ -11,6 +12,7 @@ public class InkDialogManager : MonoBehaviour
     [SerializeField] GameObject[] dialogButton;
     [SerializeField] TextMeshProUGUI[] dialogButtonText;
     [SerializeField] Animator animatorPortrait;
+    [SerializeField] UnityEvent onDialogEnd;
     //[SerializeField] PlayerMovement playerMovement;
     private static InkDialogManager instance;
     private Story currentStory;
@@ -162,6 +164,7 @@ public class InkDialogManager : MonoBehaviour
         currentStory.ResetState();
         actions.Player.ContinueDialog.Disable();
         actions.Player.ContinueDialog.performed -= InputContinueStory;
+        onDialogEnd.Invoke();
         //playerMovement.enabled = true;
     }
 }
