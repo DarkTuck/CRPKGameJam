@@ -13,11 +13,13 @@ public class InkDialogManager : MonoBehaviour
     //[SerializeField] PlayerMovement playerMovement;
     private static InkDialogManager instance;
     private Story currentStory;
+    [SerializeField] TextAsset storyJSON;
     public bool dialogOpen { get; private set; } = false;
     Actions actions;
 
     private void Awake()
     {
+        currentStory=new Story(storyJSON.text);
         actions = new Actions();
         if (instance == null)
         {
@@ -30,19 +32,32 @@ public class InkDialogManager : MonoBehaviour
         dialogPanel.SetActive(false);
     }
 
-    public static void OpenDialog(TextAsset story)
+    public void StartDialogue(string knotName="")
     {
-        instance.EnterDialog(story);
+        EnterDialog(knotName);
     }
 
-    private void EnterDialog(TextAsset inkText)
+    private void EnterDialog(string knotName="")
     {
+        Debug.Log(knotName);
+        if (dialogOpen) 
+        {
+            return;
+        }
         actions.Player.ContinueDialog.Enable();
         actions.Player.ContinueDialog.performed += InputContinueStory;
-        currentStory = new Story(inkText.text);
         dialogOpen = true;
         dialogPanel.SetActive(true);
         //playerMovement.enabled = false;
+        if (!knotName.Equals(""))
+        {
+            currentStory.ChoosePathString(knotName);
+        }
+        else 
+        {
+            Debug.LogWarning("Knot name was the empty string when entering dialogue.");
+        }
+        
         ContinueStory();
 
     }
@@ -69,7 +84,10 @@ public class InkDialogManager : MonoBehaviour
             ExitDialogMode();
         }
     }
-
+    private bool IsLineBlank(string dialogueLine)
+    {
+        return dialogueLine.Trim().Equals("") || dialogueLine.Trim().Equals("\n");
+    }
     private void InputContinueStory(InputAction.CallbackContext context)
     {
         ContinueStory();
@@ -102,7 +120,7 @@ public class InkDialogManager : MonoBehaviour
     {
         dialogPanel.SetActive(false);
         dialogOpen = false;
-        dialogText.text = "";
+        currentStory.ResetState();
         actions.Player.ContinueDialog.Disable();
         actions.Player.ContinueDialog.performed -= InputContinueStory;
         //playerMovement.enabled = true;
