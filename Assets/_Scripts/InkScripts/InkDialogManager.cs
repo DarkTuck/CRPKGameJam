@@ -14,7 +14,7 @@ public class InkDialogManager : MonoBehaviour
     //[SerializeField] PlayerMovement playerMovement;
     private static InkDialogManager instance;
     private Story currentStory;
-    [SerializeField] TextAsset storyJSON;
+    //[SerializeField] TextAsset storyJSON;
     public bool dialogOpen { get; private set; } = false;
     Actions actions;
     private const string SPEAKER_TAG = "speaker";
@@ -23,7 +23,7 @@ public class InkDialogManager : MonoBehaviour
 
     private void Awake()
     {
-        currentStory=new Story(storyJSON.text);
+        //currentStory=new Story(storyJSON.text);
         actions = new Actions();
         if (instance == null)
         {
@@ -36,24 +36,29 @@ public class InkDialogManager : MonoBehaviour
         dialogPanel.SetActive(false);
     }
 
-    public void StartDialogue(string knotName="")
+    public void StartDialogue(TextAsset textAsset)
     {
-        EnterDialog(knotName);
+        EnterDialog(textAsset);
     }
 
-    private void EnterDialog(string knotName="")
+    public static void OpenDialogue(TextAsset textAsset)
     {
-        Debug.Log(knotName);
+        instance.StartDialogue(textAsset);
+    }
+    private void EnterDialog(TextAsset textAsset)
+    {
+        //Debug.Log();
         if (dialogOpen) 
         {
             return;
         }
+        currentStory= new Story(textAsset.text);
         actions.Player.ContinueDialog.Enable();
         actions.Player.ContinueDialog.performed += InputContinueStory;
         dialogOpen = true;
         dialogPanel.SetActive(true);
         //playerMovement.enabled = false;
-        if (!knotName.Equals(""))
+        /*if (!knotName.Equals(""))
         {
             currentStory.ChoosePathString(knotName);
         }
@@ -61,7 +66,7 @@ public class InkDialogManager : MonoBehaviour
         {
             Debug.LogWarning("Knot name was the empty string when entering dialogue.");
         }
-        
+        */
         ContinueStory();
 
     }
