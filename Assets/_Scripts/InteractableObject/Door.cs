@@ -3,7 +3,7 @@ using DG.Tweening;
 using UnityEngine;
 
 
-public class Door :InteractiveObject
+public class Door : InteractiveObject
 {
     [SerializeField] GameObject gameObjectToLoad;
     [SerializeField] GameObject thisGameObject;
