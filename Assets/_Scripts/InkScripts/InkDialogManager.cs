@@ -10,6 +10,7 @@ public class InkDialogManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI dialogText,displayNameText;
     [SerializeField] GameObject[] dialogButton;
     [SerializeField] TextMeshProUGUI[] dialogButtonText;
+    [SerializeField] Animator animatorPortrait;
     //[SerializeField] PlayerMovement playerMovement;
     private static InkDialogManager instance;
     private Story currentStory;
@@ -107,6 +108,7 @@ public class InkDialogManager : MonoBehaviour
                     displayNameText.text=tagValue;
                     break;
                 case PORTRAIT_TAG:
+                    animatorPortrait.Play(tagValue);
                     break;
                 case LAYOUT_TAG:
                     break;
