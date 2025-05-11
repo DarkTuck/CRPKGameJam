@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44f2a5eb194d5844caa37fa87eefdff0, type: 3}
   m_Name: EtherBottle
   m_EditorClassIdentifier: 
-  objectImage: {fileID: 0}
-  status: 0
-  owner: 0
+  objectImage: {fileID: 21300000, guid: b2ac0bb88a46e46448ab70a2fc2087af, type: 3}
+  status: 1
+  owner: 2
   description: 
   connectedObject: {fileID: 0}
