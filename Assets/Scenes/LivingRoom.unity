@@ -2107,19 +2107,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1323714867}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1720279031}
-        m_TargetAssemblyTypeName: EvidenceTableScript, Assembly-CSharp
-        m_MethodName: DisplayEvidenceTable
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1323714867
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2669,6 +2657,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3982384191358479231, guid: 157e8787269dab349819c19201ba7a4c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1720279032}
+    - targetCorrespondingSourceObject: {fileID: 3982384191358479231, guid: 157e8787269dab349819c19201ba7a4c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1720279033}
   m_SourcePrefab: {fileID: 100100000, guid: 157e8787269dab349819c19201ba7a4c, type: 3}
 --- !u!224 &1720279030 stripped
 RectTransform:
@@ -2710,6 +2701,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   evidenceTable: {fileID: 1720279031}
   output: {fileID: 11400000, guid: 628c058b62ebf4c4f881695ebae53ff8, type: 2}
+--- !u!114 &1720279033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 823112820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e8c6ee1ce3149d4baa75594999410b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onEnable:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1720279031}
+        m_TargetAssemblyTypeName: EvidenceTableScript, Assembly-CSharp
+        m_MethodName: DisplayEvidenceTable
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onDisable:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1804260283
 PrefabInstance:
   m_ObjectHideFlags: 0
