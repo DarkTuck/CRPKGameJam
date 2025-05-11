@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class InkDialogManager : MonoBehaviour
 {
     [SerializeField] GameObject dialogPanel,ContinueButton;
-    [SerializeField] TextMeshProUGUI dialogText;
+    [SerializeField] TextMeshProUGUI dialogText,displayNameText;
     [SerializeField] GameObject[] dialogButton;
     [SerializeField] TextMeshProUGUI[] dialogButtonText;
     //[SerializeField] PlayerMovement playerMovement;
@@ -16,6 +16,9 @@ public class InkDialogManager : MonoBehaviour
     [SerializeField] TextAsset storyJSON;
     public bool dialogOpen { get; private set; } = false;
     Actions actions;
+    private const string SPEAKER_TAG = "speaker";
+    private const string PORTRAIT_TAG = "portrait";
+    private const string LAYOUT_TAG = "layout";
 
     private void Awake()
     {
@@ -78,10 +81,39 @@ public class InkDialogManager : MonoBehaviour
         {
             dialogText.text=currentStory.Continue();
             DisplayChoice();
+            HandleTags(currentStory.currentTags);
         }
         else
         {
             ExitDialogMode();
+        }
+    }
+
+    private void HandleTags(List<string> currentTags)
+    {
+        foreach (string tag in currentTags)
+        {
+            string[] splitTag = tag.Split(':');
+            if (splitTag.Length != 2)
+            {
+                Debug.LogError($@"Parsing the tag has failed: {tag} tag");
+            }
+            string tagKey = splitTag[0].Trim();
+            string tagValue = splitTag[1].Trim();
+
+            switch (tagKey)
+            {
+                case SPEAKER_TAG:
+                    displayNameText.text=tagValue;
+                    break;
+                case PORTRAIT_TAG:
+                    break;
+                case LAYOUT_TAG:
+                    break;
+                default:
+                    Debug.LogWarning($@"Tag was not recognised: {tagKey} tag");
+                    break;
+            }
         }
     }
     private bool IsLineBlank(string dialogueLine)
