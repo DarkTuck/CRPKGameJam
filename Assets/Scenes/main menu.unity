@@ -930,7 +930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 115f5d8ec8ce50c4796f1b14e19fbb92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToLoad: Intro
+  sceneToLoad: LivingRoom
 --- !u!1 &839911330
 GameObject:
   m_ObjectHideFlags: 0

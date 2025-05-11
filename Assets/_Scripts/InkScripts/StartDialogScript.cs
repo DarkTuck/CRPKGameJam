@@ -6,7 +6,7 @@ public class StartDialogScript : MonoBehaviour
 
     public void StartDialog()
     {
-        InkDialogManager.OpenDialogue(dialogTextAsset);
+        //InkDialogManager.OpenDialog(dialogTextAsset);
     }
     
 }
